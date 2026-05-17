@@ -20,7 +20,7 @@ def solver(grid):
 
         
     for y, row in enumerate(grid):
-        for x, cell in row:
+        for x, cell in enumerate(row):
             if cell == '1':
                 counter += 1
                 dfs(x, y)
