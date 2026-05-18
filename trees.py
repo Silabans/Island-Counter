@@ -4,6 +4,9 @@ class Node:
         self.val = val
         self.left = None
         self.right = None
+    
+    def __repr__(self):
+        return f"Node value: {self.val}"
 
 
 def inorder(node):
@@ -72,6 +75,13 @@ def path_sum(target, node):
     return path_sum(target, node.left) or path_sum(target, node.right)
 
 
+def mirror_tree(node):
+    if node is None: return      
+    mirror_tree(node.left)
+    mirror_tree(node.right)
+    node.left, node.right = node.right, node.left
+
 # testing
 if __name__ == '__main__':
-    print(path_sum(13, root))
+    mirror_tree(root)
+    print(inorder(root))
