@@ -56,6 +56,22 @@ def find_height(node):
     return 1 + max(lheight, rheight)
 
 
+def node_count(node):
+    if node is None: return 0
+    lcount = node_count(node.left)
+    rcount = node_count(node.right)
+
+    return 1 + lcount + rcount
+
+
+def path_sum(target, node):
+    if node is None: return False
+    target -= node.val
+    if node.left is None and node.right is None:
+        return target == 0
+    return path_sum(target, node.left) or path_sum(target, node.right)
+
+
 # testing
 if __name__ == '__main__':
-    print(find_height(root))
+    print(path_sum(13, root))
